@@ -6,7 +6,7 @@
 
 ## About
 
-SAT.js is a simple JavaScript library for performing collision detection (and projection-based collision response) of simple 2D shapes.  It uses the [Separating Axis Theorem](http://en.wikipedia.org/wiki/Hyperplane_separation_theorem) (hence the name)
+SAT.ts is a simple TypeScript library for performing collision detection (and projection-based collision response) of simple 2D shapes.  It uses the [Separating Axis Theorem](http://en.wikipedia.org/wiki/Hyperplane_separation_theorem) (hence the name)
 
 It supports detecting collisions between:
  - Circles (using Voronoi Regions.)
@@ -44,7 +44,7 @@ It contains the following methods:
  - `copy(other)` - Copy the value of another Vector to this one.
  - `clone()` - Return a new vector with the same coordinates as this one.
  - `perp()` - Change this vector to be perpendicular to what it was before.
- - `rotate(angle)` - Rotate this vector counter-clockwise by the specified number of radians.
+ - `rotate(radians)` - Rotate this vector counter-clockwise by the specified number of radians.
  - `reverse()` - Reverse this Vector.
  - `normalize()` - Make the Vector unit-lengthed.
  - `add(other)` - Add another Vector to this one.
@@ -100,9 +100,9 @@ It has the following properties:
 
  - `pos` - The position of the polygon (all points are relative to this).
  - `points` - Array of vectors representing the original points of the polygon.
- - `angle` - Angle to rotate the polgon (affects `calcPoints`)
- - `offset` - Translation to apply to the polygon before the `angle` rotation (affects `calcPoints`)
- - `calcPoints` - (Calculated) The collision polygon - effectively `points` with `angle` and `offset` applied.
+ - `radians` - Angle to rotate the polgon (affects `calcPoints`)
+ - `offset` - Translation to apply to the polygon before the `radians` rotation (affects `calcPoints`)
+ - `calcPoints` - (Calculated) The collision polygon - effectively `points` with `radians` and `offset` applied.
  - `edges` - (Calculated) Array of Vectors representing the edges of the calculated polygon
  - `normals` - (Calculated) Array of Vectors representing the edge normals of the calculated polygon (perpendiculars)
 
@@ -111,9 +111,9 @@ You should _not_ manually change any of the properties except `pos` - use the `s
 It has the following methods:
 
  - `setPoints(points)` - Set the original points
- - `setAngle(angle)` - Set the current rotation angle (in radians)
+ - `setAngle(radians)` - Set the current rotation radians (in radians)
  - `setOffset(offset)` - Set the current offset
- - `rotate(angle)` - Rotate the original points of this polygon counter-clockwise (around its local coordinate system) by the specified number of radians. The `angle` rotation will be applied on top of this rotation.
+ - `rotate(radians)` - Rotate the original points of this polygon counter-clockwise (around its local coordinate system) by the specified number of radians. The `radians` rotation will be applied on top of this rotation.
  - `translate(x, y)` - Translate the original points of this polygon (relative to the local coordinate system) by the specified amounts. The `offset` translation will be applied on top of this translation.
  - `getAABB()` - Compute the axis-aligned bounding box. Returns a new Polygon every time it is called. Is performed based on the `calcPoints`.
  - `getAABBAsBox()` - Compute the axis-aligned bounding box. Returns a new Box every time it is called. Is performed based on the `calcPoints`.
